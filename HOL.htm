@@ -1,0 +1,377 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js" lang="en" class="js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
+<head id="ContentPlaceHolderDefault_Head1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Windows Phone 8 Training Kit - Choosers in Windows Phone</title>
+    <link rel="Stylesheet" type="text/css" media="all" href="styles/master.css" />
+</head>
+<body id="top" class="page-">
+    <div id="page">
+        <div id="wrapper" class="landingPage getStartedPage">            
+            <div class="header">								
+				<img alt="Windows Phone 8" src="images/wp8tk-logo.png" />
+				<span class="mainHomepageSubTitle"><!----></span>								
+			</div>			
+			<div class="nav-menu-header">
+				<nav>
+					<ul>
+						<li class="MenuLink-Selected">
+							<a href="#">Content</a>
+						</li>
+												<li class="MenuLink">
+							<a href="Source">Source</a>
+						</li>
+											</ul>
+				
+										
+						<span id="github-btn" class="github-btn">
+						  <a id="gh-btn" title="Fork this repo in GitHub" href="https://github.com/WindowsPhone-8-TrainingKit/HOL-Choosers" target="_blank" class="gh-btn">
+							<span class="gh-ico"></span>
+							<span id="gh-text" class="gh-text">Fork</span>
+						  </a>								  
+						</span>								
+						<span id="github-btn" class="github-btn github-watchers">
+						  <a id="gh-btn" title="Watch this repo in GitHub" href="https://github.com/WindowsPhone-8-TrainingKit/HOL-Choosers" target="_blank" class="gh-btn">
+							<span class="gh-ico"></span>
+							<span id="gh-text" class="gh-text">Watch</span>
+						  </a>								  
+						</span>
+						
+									
+				</nav>
+			</div>	        
+		</span>
+			<div id="content" class="textpage">
+            <section id="content-container">
+				<div id="content" class="textpage">
+			    <a name="top"></a>
+				
+				
+
+		<div class="content">
+			<?xml version="1.0" encoding="iso-8859-1"?><span><p><a name="title"></a></p>
+
+<h1 id="Choosers_in_Windows_Phone">Choosers in Windows Phone</h1>
+
+<hr />
+
+<p><a name="Overview"></a></p>
+
+<h2 id="Overview">Overview</h2>
+
+<p>The launchers and choosers framework enables Windows Phone applications to provide common functions such as placing phone calls, sending emails, and taking pictures for their users.</p>
+
+<p>The Windows Phone application model isolates every application in its own work area for both execution (including memory isolation) and file storage. Windows Phone applications are not able to <strong>directly</strong> access common information stores such as the contacts list or to directly invoke other applications such as phoning or messaging. To support scenarios requiring common tasks such as phoning or messaging, the Windows Phone provides a set of launcher and chooser APIs that enables applications to access these useful phone features indirectly. The launcher and chooser APIs invoke distinct built-in applications that replace the currently running application. The launchers and choosers framework provides the end user with a seamless experience while masking the application switching that occurs in the background.</p>
+
+<p>The framework components are as follows:</p>
+
+<ul>
+<li><strong>Chooser</strong> - An &quot;open file dialog&quot; action, where information is selected from a specific phone application's storage area, for example, selecting an email address, contact, or picture</li>
+</ul>
+
+<p>Below is the partial list of choosers that Windows Phone 8 supports:</p>
+
+<p><strong>Choosers</strong></p>
+
+<ul>
+<li><p><strong>EmailAddressChooserTask</strong> - Enables an application to launch the Contacts application, so users can extract selected contact email addresses</p></li>
+<li><p><strong>CameraCaptureTask</strong> - Enables an application to launch the Camera application, so users can take a photo from within an application</p></li>
+<li><p><strong>PhoneNumberChooserTask</strong> - Enables an application to launch the Contacts application, so users can extract selected contact phone numbers</p></li>
+<li><p><strong>PhotoChooserTask</strong> - Enables an application to launch the Photo Chooser application, so users can select a photo</p></li>
+<li><p><strong>Contacts</strong> - Allows an application to search for contacts according to their name, e-mail address or phone number.</p></li>
+<li><p><strong>Appointments</strong> - Allows an application to search for appointments which occur in a specified time span.</p></li>
+</ul>
+
+<h3 id="Objectives">Objectives</h3>
+
+<p>Upon completion of this lab, you will:</p>
+
+<ul>
+<li><p>Be familiar with the choosers concept as implemented in the Windows Phone application model</p></li>
+<li><p>Understand how and when to use choosers</p></li>
+<li><p>Have created an application that uses the wide array of available choosers</p></li>
+</ul>
+
+<p><a name="technologies"></a></p>
+
+<h3 id="Prerequisites">Prerequisites</h3>
+
+<p>The following is required to complete this hands-on lab:</p>
+
+<ul>
+<li><p>Previous Windows Phone development experience.</p></li>
+<li><p>Visual Studio 2012 Express for Windows Phone or Microsoft Visual Studio 2012</p></li>
+<li><p>Windows Phone Developer Tools</p></li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> All of these Tools can be downloaded together in a single package from <a href="http://developer.windowsphone.com/"><a href="http://developer.windowsphone.com">http://developer.windowsphone.com</a></a></p>
+</blockquote>
+<p><a name="Exercises"></a></p>
+
+<h2 id="Exercises">Exercises</h2>
+
+<p>This hands-on lab is comprised of the following exercises:</p>
+
+<ul>
+<li><a href="#Exercise1">Introduction to the Windows Phone Choosers</a></li>
+</ul>
+
+<p>Estimated time to complete this lab: <strong>15 minutes</strong>.</p>
+
+<p><a name="Exercise1"></a></p>
+
+<h2 id="Exercise_1_Introduction_to_the_Windows_Phone_Choosers">Exercise 1: Introduction to the Windows Phone Choosers</h2>
+
+<p>A chooser is an API that launches one of the built-in applications through which a user completes a task and then returns some kind of data to the calling application. For example, the phone chooser launches the &quot;contact people&quot; experience, enabling a search for a particular contact. When successful, the requested contact information is returned. Another example of this is the <strong>PhotoChooserTask</strong>. An application can use this chooser to show the Photo Chooser application to allow the user to select a photo. The user can always cancel out of the Photo Chooser instead. Once the chooser is dismissed, the calling application is activated and supplied with the Chooser's results. The result includes a value that indicates whether the user completed the task and, if the user did complete the task, the result includes additional relevant data, such as an IO stream containing the selected photo's image data.</p>
+
+<p><a name="Ex1Task1"></a></p>
+
+<h4 id="Task_1_-_Using_Choosers">Task 1 - Using Choosers</h4>
+
+<ol>
+<li><p>Open the starter solution from this lab's <strong>Sources\Ex1-IntroToWindowsPhoneChoosers\Begin</strong> folder.</p></li>
+<li><p>Open MakePhoneCallPage.xaml.cs. </p></li>
+<li><p>Note we overrode the OnNavigatedFrom and OnNavigatedTo functions in order to add debug information when the application is being tombstoned.</p>
+
+<p>In this page, a phone call is made to one of the contacts added during the previous exercise. To get a contact's phone number, this page uses the <strong>PhoneNumberChooserTask</strong> class. This class enables an application to launch the Contacts application to obtain the phone number of a contact selected by the user. The chooser works asynchronously, therefore the &quot;Completed&quot; event must be subscribed to before launching the Chooser. After the chooser returns a phone number, this page uses <strong>PhoneCallTask</strong> which makes a phone call to the selected phone number.</p></li>
+<li><p>Start by adding the following variable to the class:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#">PhoneNumberChooserTask phoneNumberChooserTask;
+</code></pre></li>
+<li><p>Add the following highlighted code to the class's constructor after the <em>InitializeComponent</em> method call:</p>
+
+<!-- mark:7-8    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> MakePhoneCallPage()
+{
+    InitializeComponent();
+
+    Debug.WriteLine(<span style="color:#8B0000">&quot;***\t In constructor of MakePhoneCallPage\t ***&quot;</span>);
+
+<strong class="markLine">    phoneNumberChooserTask = <span style="color:#0000FF">new</span> PhoneNumberChooserTask();</strong>
+<strong class="markLine">    phoneNumberChooserTask.Completed += <span style="color:#0000FF">new</span> EventHandler&lt;PhoneNumberResult&gt;(phoneNumberChooserTask_Completed);</strong>
+}
+</code></pre></li>
+<li><p>Add the <strong>phoneNumberChooserTask_Completed</strong> event handler function to manage the completed event using the following code:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">void</span> phoneNumberChooserTask_Completed(<span style="color:#0000FF">object</span> sender, PhoneNumberResult e)
+{
+    <span style="color:#0000FF">string</span> debugMsg = <span style="color:#0000FF">string</span>.Format(
+        <span style="color:#8B0000">&quot;***\t In phoneNumberChooserTask_Completed function of MakePhoneCallPage, phone number returned: {0}, for contact: {1}\t ***&quot;</span>,      e.PhoneNumber, e.DisplayName);
+
+    Debug.WriteLine(debugMsg);
+
+    <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.OK)
+    {
+        PhoneCallTask phoneCallTask = <span style="color:#0000FF">new</span> PhoneCallTask();
+        phoneCallTask.PhoneNumber = e.PhoneNumber;
+        phoneCallTask.Show();
+    }
+    <span style="color:#0000FF">else</span> <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.Cancel)
+        MessageBox.Show(<span style="color:#8B0000">&quot;Cannot make a phone call without a phone number&quot;</span>, <span style="color:#8B0000">&quot;Number not selected&quot;</span>, MessageBoxButton.OK);
+    <span style="color:#0000FF">else</span>
+        MessageBox.Show(<span style="color:#8B0000">&quot;Error getting phone number:\n&quot;</span> + e.Error.Message, <span style="color:#8B0000">&quot;Fail&quot;</span>, MessageBoxButton.OK);
+}
+</code></pre></li>
+<li><p>Add the following code  to the <strong>btnMakePhoneCall_Click</strong> handler function:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> btnMakePhoneCall_Click(<span style="color:#0000FF">object</span> sender, RoutedEventArgs e)
+{
+    phoneNumberChooserTask.Show();
+}
+</code></pre></li>
+<li><p>Press <strong>F5</strong> to compile and run the application. </p></li>
+<li><p>Navigate to the &quot;Make a Phone Call&quot; page and click <strong>Make Call</strong>:</p></li>
+<li><p>Select the contact:</p>
+
+<p><img src="./Images/Selecting-a-contact.png?raw=true" alt="" />
+</p>
+
+<p><em>Selecting a contact</em></p></li>
+<li><p>If there are multiple phone numbers for a single contact, an additional phone selection step is displayed. In this case, select one of the contact's phone numbers. If there is only one phone number, the contact selection serves as the phone selection.</p></li>
+<li><p>Click <strong>call</strong> to make the phone call:</p>
+
+<p><img src="./Images/Making-a-Call.png?raw=true" alt="" />
+</p>
+
+<p><em>Making a Call</em></p></li>
+<li><p>Click <strong>end call</strong> to return to MakePhoneCallPage:</p></li>
+<li><p>Press <strong>SHIFT+F5</strong> to stop the debugging and return to the Visual Studio.</p></li>
+<li><p>Open the SendSMSPage.xaml.cs. </p></li>
+<li><p>Note we overrode the OnNavigatedFrom and OnNavigatedTo functions in order to add debug information when the application is being tombstoned.</p>
+
+<p>This page allows us to send an SMS message to one of the contacts added during the previous exercise. Like the previous page we added, this page uses the <strong>PhoneNumberChooserTask</strong> class to pick a contact's phone number. After the chooser returns a phone number, this page uses <strong>SmsComposeTask</strong>, which enables composing SMS messages and sending them to the selected phone number.</p></li>
+<li><p>Start by adding the following variable to the class:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#">PhoneNumberChooserTask phoneNumberChooserTask;
+</code></pre></li>
+<li><p>Add the following highlighted code to the class's constructor after the <em>InitializeComponent</em> method call:</p>
+
+<!-- mark:7-8    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> UsePhoneNumberPage()
+{
+    InitializeComponent();
+
+    Debug.WriteLine(<span style="color:#8B0000">&quot;***\t In constructor of SendSMSPage\t ***&quot;</span>);
+
+<strong class="markLine">    phoneNumberChooserTask = <span style="color:#0000FF">new</span> PhoneNumberChooserTask();</strong>
+<strong class="markLine">    phoneNumberChooserTask.Completed += <span style="color:#0000FF">new</span> EventHandler&lt;PhoneNumberResult&gt;(phoneNumberChooserTask_Completed);</strong>
+}
+</code></pre></li>
+<li><p>Add the <strong>phoneNumberChooserTask_Completed</strong> event handler function to manage the completed event using the following code:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">void</span> phoneNumberChooserTask_Completed(<span style="color:#0000FF">object</span> sender, 
+                     PhoneNumberResult e)
+{
+    <span style="color:#0000FF">string</span> debugMsg = <span style="color:#0000FF">string</span>.Format(
+        <span style="color:#8B0000">&quot;***\t In phoneNumberChooserTask_Completed function of SendSMSPage, phone number returned: {0}, for contact: {1}\t ***&quot;</span>, 
+    e.PhoneNumber, e.DisplayName);
+
+    Debug.WriteLine(debugMsg);
+
+    <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.OK)
+    {
+        SmsComposeTask smsComposeTask = <span style="color:#0000FF">new</span> SmsComposeTask();
+        <span style="color:#0000FF">if</span>(!<span style="color:#0000FF">string</span>.IsNullOrEmpty(txtInput.Text))
+            smsComposeTask.Body = txtInput.Text;
+        smsComposeTask.To = e.PhoneNumber;
+        smsComposeTask.Show();
+    }
+    <span style="color:#0000FF">else</span> <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.Cancel)
+        MessageBox.Show(<span style="color:#8B0000">&quot;Cannot send SMS without a phone number&quot;</span>, <span style="color:#8B0000">&quot;Number not selected&quot;</span>, MessageBoxButton.OK);
+    <span style="color:#0000FF">else</span>
+        MessageBox.Show(<span style="color:#8B0000">&quot;Error getting phone number:\n&quot;</span> + e.Error.Message, <span style="color:#8B0000">&quot;Fail&quot;</span>, MessageBoxButton.OK);
+}
+</code></pre></li>
+<li><p>Add the following code  to the <strong>btnSendSMS_Click</strong> handler function:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> btnSendSMS_Click(<span style="color:#0000FF">object</span> sender, RoutedEventArgs e)
+{
+    phoneNumberChooserTask.Show();
+}
+</code></pre></li>
+<li><p>Press <strong>F5</strong> to compile and run the application. </p></li>
+<li><p>Navigate to the &quot;Send SMS&quot; page, enter a message and click <strong>Send SMS</strong>:</p>
+
+<p><img src="./Images/Sending-the-SMS-message.png?raw=true" alt="" />
+</p>
+
+<p><em>Sending the SMS message</em></p></li>
+<li><p>Select the contact.</p></li>
+<li><p>If there are multiple phone numbers for a single contact, an additional phone selection step is displayed. In this case, select one of the contact's phone numbers. If there is only one phone number, the contact selection serves as the phone selection.</p></li>
+<li><p>Modify the message entered previously, if needed, and click <strong>Send</strong> (<img src="./Images/image-0.png?raw=true" alt="" />
+):</p>
+
+<p><img src="./Images/Sending-the-SMS-message-2.png?raw=true" alt="" />
+</p>
+
+<p><em>Sending the SMS message</em></p></li>
+<li><p>Press <strong>SHIFT+F5</strong> to stop the debugging and return to the Visual Studio.</p></li>
+<li><p>Open <strong>ChoosePhotoPage.xaml.cs</strong>. </p></li>
+<li><p>Add the following using statements to the class:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">using</span> System.Windows.Media.Imaging;
+</code></pre></li>
+<li><p>Note we overrode the OnNavigatedFrom and OnNavigatedTo functions in order to add debug information when the application is being tombstoned.</p>
+
+<p>In this page a photo is chosen from the Image Hub. To choose the photo, this page uses the <strong>PhotoChooserTask</strong> class. This class allows  an application to launch an image selector that displays images from the Image Hub. The chooser works asynchronously, therefore the &quot;Completed&quot; event must be subscribed to before launching the chooser. After the chooser returns an image stream, this page displays it.</p></li>
+<li><p>Start by adding the following variable to the class:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#">PhotoChooserTask photoChooserTask;
+</code></pre></li>
+<li><p>Add the following bold-yellow-highlighted code to the class's constructor after the <em>InitializeComponent</em> method call:</p>
+
+<!-- mark:7-8    -->
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">public</span> ChoosePhotoPage()
+{
+    InitializeComponent();
+
+    Debug.WriteLine(<span style="color:#8B0000">&quot;***\t In constructor of ChoosePhotoPage\t ***&quot;</span>);
+
+<strong class="markLine">    photoChooserTask = <span style="color:#0000FF">new</span> PhotoChooserTask();</strong>
+<strong class="markLine">    photoChooserTask.Completed += <span style="color:#0000FF">new</span> EventHandler&lt;PhotoResult&gt;(photoChooserTask_Completed);</strong>
+}
+</code></pre></li>
+<li><p>Add the <strong>photoChooserTask_Completed</strong> event handler function to manage the completed event using the following code:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">void</span> photoChooserTask_Completed(<span style="color:#0000FF">object</span> sender, PhotoResult e)
+{
+    Debug.WriteLine(<span style="color:#8B0000">&quot;***\t In photoChooserTask_Completed function of ChoosePhotoPage\t ***&quot;</span>);
+
+    <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.OK)
+    {
+        BitmapImage bitmap = <span style="color:#0000FF">new</span> BitmapImage();
+        bitmap.SetSource(e.ChosenPhoto);
+        imgChosenPhoto.Source = bitmap;
+    }
+    <span style="color:#0000FF">else</span> <span style="color:#0000FF">if</span> (e.TaskResult == TaskResult.Cancel)
+        MessageBox.Show(<span style="color:#8B0000">&quot;No photo was chosen - operation was cancelled&quot;</span>, <span style="color:#8B0000">&quot;Photo not chosen&quot;</span>, MessageBoxButton.OK);
+    <span style="color:#0000FF">else</span>
+        MessageBox.Show(<span style="color:#8B0000">&quot;Error while choosing photo:\n&quot;</span> + e.Error.Message, <span style="color:#8B0000">&quot;Fail&quot;</span>, MessageBoxButton.OK);
+}
+</code></pre></li>
+<li><p>Add the following code  to the <strong>btnChoosePhoto_Click</strong> handler function:</p>
+
+<span class="codelanguage">C#</span><pre><code class="C#"><span style="color:#0000FF">private</span> <span style="color:#0000FF">void</span> btnChoosePhoto_Click(<span style="color:#0000FF">object</span> sender, RoutedEventArgs e)
+{
+    photoChooserTask.Show();
+}
+</code></pre></li>
+<li><p>Press <strong>F5</strong> to compile and run the application. </p></li>
+<li><p>Navigate to the &quot;Choose a Photo&quot; page and click <strong>Choose a Photo</strong>:</p></li>
+<li><p>Choose a photo from the Image Hub by clicking it.</p>
+
+<p><img src="./Images/Choosing-an-Image.png?raw=true" alt="" />
+</p>
+
+<p><em>Choosing an image from the Image Hub</em></p></li>
+<li><p>The chosen photo should now appear in the <strong>ChoosePhotoPage.</strong></p>
+
+<p><img src="./Images/Chosen-Photo.png?raw=true" alt="" />
+</p>
+
+<p><em>Chosen photo appears in the <strong>ChoosePhotoPage</strong></em></p></li>
+<li><p>Press <strong>SHIFT+F5</strong> to stop the debugging and return to the Visual Studio.</p>
+<blockquote>
+<p><strong>Note:</strong> The solution for this exercise is located at the <strong>Sources\Ex1-IntroToWindowsPhoneChoosers\End</strong> folder of this lab.</p>
+</blockquote></li>
+</ol>
+
+<hr />
+
+<p><a name="Summary"></a></p>
+
+<h2 id="Summary">Summary</h2>
+
+<p>This lab illustrated the use of choosers in Windows Phone 7. Each of the application's many pages serves as an example for using a specific chooser. Using these examples you should be able to easily utilize choosers in your future applications.</p>
+
+</span>
+		</div>
+	<br />
+	<p><a href="#top">Top of page</a></p>
+
+
+				</div>
+			</section>
+			<footer>
+				<div class="footer-sitemap" style="border-top:0"></div>
+				<div class="footer-bottom">
+					<ul>
+						<li class="footer-copyright"><a href="http://www.microsoft.com"><img alt="microsoft" src="images/microsoft.png" /></a><br/>&copy; 2013 Microsoft</li>					
+												<li><a href="https://github.com/WindowsPhone-8-TrainingKit/HOL-Choosers/issues" target="_new">File an Issue</a></li>
+												<li><a href="mailto:email address here?subject=Windows Phone 8 Training Kit">Contact Us</a></li>
+						<li><a href="EULA.htm">Terms of Use</a></li>
+						<li><a href=".\">Browse Content</a></li>
+					</ul>
+				</div>
+			</footer>
+			</div>
+        </div>
+    </div>
+</body>
+</html>
+
